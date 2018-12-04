@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ pageTitle }}</title>
+    <link href="https://alquran.cloud/public/css/font-all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/index.css"/>
+  </head>
+  <body>
+
+  <ul>
+    {% for a in data.ayahs %}
+      <li>
+        <div class="quran-card">
+            <div class="to3rem font-uthmani">
+              {{a.text}}
+            </div>
+            <div>
+              <audio controls>
+                <source src="{{a.audio}}"/>
+              </audio>
+            </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  
+  </body>
+</html>

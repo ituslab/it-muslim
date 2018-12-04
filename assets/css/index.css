@@ -1,0 +1,28 @@
+*{
+    font-weight: normal !important;
+    color: crimson;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+
+.to3rem {
+    font-size: 3rem;
+}
+
+ul {
+    padding-left: 0;
+    text-align: right;
+}
+li {
+    list-style-type: none;
+}
+
+.quran-card {
+    border-radius: 4px;
+    margin: 15px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3),0px 0px 4px rgba(0, 0, 0, 0.3) ;
+}

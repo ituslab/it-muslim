@@ -1,10 +1,10 @@
 {
   "name": "it-quran",
   "version": "1.0.0",
-  "description": "---",
+  "description": "Simple Al-Quran web app built with love",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
   "homepage": "https://github.com/itpolsri/it-quran#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "nodemon": "^1.18.7",
     "nunjucks": "^3.1.4"
   }
 }
