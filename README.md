@@ -8,3 +8,5 @@
 
 ### arabic font used
   - https://alquran.cloud/public/css/font-all.css
+
+## $ git config --global credential.helper 'cache --timeout=3600'
