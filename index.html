@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://alquran.cloud/public/css/font-all.css" rel="stylesheet">
+    <style media="screen">
+      *{
+        font-weight: normal !important;
+        color: crimson
+      }
+    </style>
+  </head>
+  <body>
+  <h5 id="h5" style="font-size: 3rem;" class="font-uthmani"></h5>
+  <audio controls>
+    <source src="https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/2">
+  </audio>
+  <script type="text/javascript">
+    fetch(`http://api.alquran.cloud/ayah/2/ar.alafasy`)
+    .then(r => r.json())
+    .then(rJson=>{
+        const {text, audio} = rJson.data
+        document.getElementById('h5').innerHTML = text
+    })
+    .catch(err=>{
+      console.error(err)
+    })
+  </script>
+  </body>
+</html>
