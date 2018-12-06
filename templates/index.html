@@ -5,6 +5,11 @@
     <title>{{ pageTitle }}</title>
     <link href="https://alquran.cloud/public/css/font-all.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/index.css"/>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    
   </head>
   <body>
 
@@ -15,10 +20,8 @@
             <div class="to3rem font-uthmani">
               {{a.text}}
             </div>
-            <div>
-              <audio controls>
-                <source src="{{a.audio}}"/>
-              </audio>
+            <div class="control-container" data-number="{{a.number}}">
+              <button class="btn-audio" >Play audio</button>
             </div>
         </div>
       </li>
@@ -27,4 +30,5 @@
 
   
   </body>
+  <script src="/assets/js/index.js"></script>
 </html>

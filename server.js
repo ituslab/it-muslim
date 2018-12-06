@@ -20,6 +20,26 @@ app.use(bodyParser.urlencoded({
 }))
 
 
+
+ 
+
+app.get('/surah/:surah',(req,res)=>{
+    axios
+        .get(`http://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
+        .then(r=>{
+            const {data} = r.data
+
+            res.render('index.html',{
+                pageTitle:'Index Page',
+                data
+            })
+        })
+        .catch(err=>{
+            console.error('ERR_RESPONSE',err)
+            res.send('ERR')
+        })
+})
+
 app.get('/',(req,res)=>{ 
 
     axios
