@@ -14,14 +14,18 @@ const app = express()
 envNunjucks.express(app)
 
 
-app.use('/assets',express.static(__dirname + '/assets'))
+app.use('/assets',
+    express.static(__dirname + '/assets'),
+    express.static(__dirname + '/node_modules/materialize-css/dist'),
+)
+app.use('/assets/js',
+    express.static(__dirname + '/node_modules/jquery/dist')
+)
 app.use(bodyParser.urlencoded({
     extended:true
 }))
 
 
-
- 
 
 app.get('/surah/:surah',(req,res)=>{
     axios
