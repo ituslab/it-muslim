@@ -5,23 +5,23 @@
   <link rel="stylesheet" href="/assets/css/index.css"/>
 {% endblock %}
 
-{% block mainContent %}
-  <ul>
-    {% for a in data.ayahs %}
-      <li>
-        <div class="quran-card">
-            <div class="to3rem font-uthmani">
-              {{a.text}}
-            </div>
-            <div class="control-container" data-number="{{a.number}}">
-              <button class="btn-audio" >Play audio</button>
-            </div>
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
-{% endblock %}
 
-{% block addonJs %}
-  <script src="/assets/js/index.js"></script>
+{% block mainContent %}
+  <div id="surah-container">
+    <ul class="collection">
+      {% for a in data %}
+        <li class="collection-item no-padding surah-item">
+          <div class="surah-content">
+            <span class="title surah-title">{{ a.name }}</span>
+            <p>{{ a.englishName }}</p>
+            <p>Jumlah ayat : {{ a.numberOfAyahs }}</p>
+            <p>Nomor surah : {{ a.number }}</p>
+          </div>
+          <div class="surah-detail cyan accent-2">
+            <a class="waves-effect waves-teal btn-flat">Detail</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}

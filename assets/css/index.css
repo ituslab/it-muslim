@@ -8,9 +8,6 @@ body {
 }
 
 
-.to3rem {
-    font-size: 3rem;
-}
 
 ul {
     padding-left: 0;
@@ -20,8 +17,22 @@ li {
     list-style-type: none;
 }
 
-.quran-card {
-    border-radius: 4px;
-    margin: 15px;
-    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3),0px 0px 4px rgba(0, 0, 0, 0.3) ;
+#surah-container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.surah-content {
+    padding: 10px;
+}
+.surah-detail {
+    padding: 10px;
+}
+
+.surah-title {
+    font-size: 30px;
+}
+
+.surah-item {
+    margin: 10px 0 !important;
 }

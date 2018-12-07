@@ -45,12 +45,9 @@ app.get('/surah/:surah',(req,res)=>{
 })
 
 app.get('/',(req,res)=>{ 
-
-    axios
-        .get(`http://api.alquran.cloud/surah/1/ar.alafasy`)
+    axios.get('http://api.alquran.cloud/surah')
         .then(r=>{
             const {data} = r.data
-
             res.render('index.html',{
                 pageTitle:'Index Page',
                 data
@@ -58,9 +55,8 @@ app.get('/',(req,res)=>{
         })
         .catch(err=>{
             console.error('ERR_RESPONSE',err)
-            res.send('ERR')
+            re.send('ERR')
         })
-
 })
 
 app.listen(9696,()=> console.log('server running...'))
