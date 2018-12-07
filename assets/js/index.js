@@ -5,9 +5,23 @@ var cdnAudioUrl = function(ayahNumber) {
     return 'http://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/'+ayahNumber;
 }
 
+var currentParent = null;
 
 function onAudioClick(){
+    if(currentParent && 
+            currentParent.data('number') !== 
+            $(this).closest('.control-container').data('number') 
+        ) {
+        var btnAudioEl = document.createElement('button');
+        btnAudioEl.onclick = onAudioClick;
+        btnAudioEl.innerHTML = 'Play audio';
+
+        currentParent.html(btnAudioEl);
+    }   
+
     var parent = $(this).closest('.control-container');
+    currentParent = parent;
+
     var dataNumber = parent.data('number');
 
     var newAudioEl = document.createElement('audio');
@@ -32,7 +46,6 @@ function onCloseAudioPanel(){
 
     var btnAudioEl = document.createElement('button');
     btnAudioEl.onclick = onAudioClick;
-    btnAudioEl.setAttribute('data-number',parent.data('number'));
     btnAudioEl.innerHTML = 'Play audio';
 
     parent.html(btnAudioEl);
