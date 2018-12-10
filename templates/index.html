@@ -9,33 +9,19 @@
     <div class="section row">
       <div class="col s12">
         <ul class="collection">
-          {% if surah %}
-            {% for ayah in surah.ayahs %}
-              <li class="collection-item no-padding surah-item">
-                <div class="surah-content">
-                  <span class="title surah-title">{{ ayah.text }}</span>
-                  <p>Ayat ke-{{ ayah.numberInSurah }}</p>
-                </div>
-                <div id="{{ayah.number}}" class="surah-detail cyan accent-2">
-                  <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio('{{ayah.number}}')">Play Audio</a>
-                </div>
-              </li>
-            {% endfor %}
-          {% else %}
-            {% for surah in data %}
-              <li class="collection-item no-padding surah-item">
-                <div class="surah-content">
-                  <span class="title surah-title">{{ surah.name }}</span>
-                  <p>{{ surah.englishName }}</p>
-                  <p>Jumlah ayat : {{ surah.numberOfAyahs }}</p>
-                  <p>Nomor surah : {{ surah.number }}</p>
-                </div>
-                <div class="surah-detail cyan accent-2">
-                  <a href="/surah/{{surah.number}}" class="waves-effect waves-teal btn-flat">Detail</a>
-                </div>
-              </li>
-            {% endfor %}
-          {% endif %}
+          {% for surah in data %}
+            <li class="collection-item no-padding surah-item">
+              <div class="surah-content">
+                <span class="title surah-title">{{ surah.name }}</span>
+                <p>{{ surah.englishName }}</p>
+                <p>Jumlah ayat : {{ surah.numberOfAyahs }}</p>
+                <p>Nomor surah : {{ surah.number }}</p>
+              </div>
+              <div class="surah-detail cyan accent-2">
+                <a href="/surah/{{surah.number}}" class="waves-effect waves-teal btn-flat">Detail</a>
+              </div>
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </div>

@@ -26,7 +26,10 @@ app.get('/surah/:surah', (req, res) => {
   .then(response => {
     const {data} = response.data
     const surah = data
-    res.render('index.html', {
+    console.log(surah)
+
+    
+    res.render('detail.html', {
       pageTitle: surah.englishName,
       surah
     })
@@ -52,4 +55,4 @@ app.get('/', (req, res) => {
   })
 })
 
-app.listen(9000, () => console.log('server running on http://localhost:9000'))
+app.listen(9696, () => console.log('server running on http://localhost:9696'))
