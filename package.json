@@ -5,11 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e html,js,css server.js",
-    "build": "babel src/js -d assets/js"
+    "build": "babel src -d assets/js",
+    "prestart": "babel src -d assets/js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/itpolsri/it-quran.git"
+  },
+  "nodemonConfig":{
+    "ignore":["assets/js"],
+    "events":{
+      "restart":"babel src -d assets/js"
+    }
   },
   "keywords": [],
   "author": "",
@@ -28,7 +35,8 @@
     "nunjucks": "^3.1.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-latest": "^6.24.1"
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0"
   }
 }
