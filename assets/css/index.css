@@ -17,23 +17,5 @@ li {
     list-style-type: none;
 }
 
-#surah-container {
-    width: 500px;
-    margin: 0 auto;
-}
 
-.surah-content {
-    padding: 10px;
-}
-.surah-detail {
-    padding: 10px;
-}
-
-.surah-title {
-    font-size: 30px;
-}
-
-.surah-item {
-    margin: 10px 0 !important;
-}
 

@@ -8,25 +8,37 @@ var audioCdn = function(numberAyah) {
 
 var currentParent = null;
 
-function playAudio(){
+function closeAudio(ev){
+  var parent = $(ev).closest('.surah-detail');
+  parent.html(`
+      <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio(this)">Play Audio</a>
+  `);
+}
 
-  if(!currentParent) {
-    
+function playAudio(e){
+  if(currentParent &&
+      currentParent.data('ayah') !== $(e).closest('.surah-detail').data('ayah')
+    ) {
+    console.log('on if...');
+
+    $(currentParent).html(`
+        <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio(this)">Play Audio</a>  
+    `);
   }
 
-  var parent = $(this).closest('.surah-detail');
+  var parent = $(e).closest('.surah-detail');
   currentParent = parent;
   var ayahNumber = parent.data('ayah');
   
+
   parent.html(`
-      <audio controls autoplay>
-        <source src="${audioCdn(ayahNumber)}"></source>
-      </audio>
+      <div class="audio-container">
+        <audio class="audio-player" controls>
+          <source src="${audioCdn(ayahNumber)}"></source>
+        </audio>
+        <a class="waves-effect waves-teal btn-flat btn-close" onclick="closeAudio(this)">Close</a>
+      </div>
   `);  
   
 }
-
-
-
-$('.btn-audio').click(playAudio);
 

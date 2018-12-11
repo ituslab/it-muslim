@@ -1,6 +1,10 @@
 {% extends "layouts/default.html" %}
 
 
+{% block addonCss %}
+  <link rel="stylesheet" href="/assets/css/detail.css"/>
+{% endblock %}
+
 {% block addonJs %}
   <script src="/assets/js/main.js"></script>
 {% endblock %}
@@ -18,7 +22,7 @@
                 <p>Ayat ke-{{ ayah.numberInSurah }}</p>
               </div>
               <div data-ayah="{{ ayah.number }}" class="surah-detail cyan accent-2">
-                <a class="waves-effect waves-teal btn-flat btn-audio" >Play Audio</a>
+                <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio(this)">Play Audio</a>
               </div>
             </li>
           {% endfor %}
