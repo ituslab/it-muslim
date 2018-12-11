@@ -27,7 +27,7 @@ app.get('/surah/:surah', (req, res) => {
   .then(response => {
     const {data} = response.data
     const surah = data
-    
+
     res.render('detail.html', {
       pageTitle: surah.englishName,
       surah
