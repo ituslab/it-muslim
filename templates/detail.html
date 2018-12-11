@@ -3,7 +3,7 @@
 
 {% block addonJs %}
   <script src="/assets/js/main.js"></script>
-{% block addonJs %}
+{% endblock %}
 
 
 {% block mainContent %}
@@ -17,8 +17,8 @@
                 <span class="title surah-title">{{ ayah.text }}</span>
                 <p>Ayat ke-{{ ayah.numberInSurah }}</p>
               </div>
-              <div id="{{ayah.number}}" class="surah-detail cyan accent-2">
-                <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio('{{ayah.number}}')">Play Audio</a>
+              <div data-ayah="{{ ayah.number }}" class="surah-detail cyan accent-2">
+                <a class="waves-effect waves-teal btn-flat btn-audio" >Play Audio</a>
               </div>
             </li>
           {% endfor %}
