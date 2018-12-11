@@ -1,17 +1,3 @@
-.audio-container {
-    display: flex;
-    padding: 8px;
-    align-items: center;
-}
-
-.audio-player {
-    flex-grow: 1;
-}
-
-.btn-close {
-
-}
-
 .surah-content {
     padding: 10px;
 }
@@ -21,6 +7,10 @@
 
 .surah-title {
     font-size: 30px;
+}
+
+.audio-player {
+    width: 100%;
 }
 
 .surah-item {
