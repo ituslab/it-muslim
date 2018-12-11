@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 
 app.get('/surah/:surah', (req, res) => {
   axios
-  .get(`http://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
+  .get(`https://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
   .then(response => {
     const {data} = response.data
     const surah = data
@@ -40,7 +40,7 @@ app.get('/surah/:surah', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  axios.get('http://api.alquran.cloud/surah')
+  axios.get('https://api.alquran.cloud/surah')
   .then(r => {
     const {data} = r.data
     res.render('index.html', {
@@ -49,9 +49,9 @@ app.get('/', (req, res) => {
     })
   })
   .catch(err => {
-    console.error('ERR_RESPONSE',err)
+    console.error('ERR_RESPONSE', err)
     re.send('ERR')
   })
 })
 
-app.listen(9696, () => console.log('server running on http://localhost:9696'))
+app.listen(9696, '0.0.0.0', () => console.log('server running on http://localhost:9696'))

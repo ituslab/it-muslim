@@ -15,11 +15,29 @@
     <div class="section row">
       <div class="col s12">
         <ul class="collection">
+          {% if surah.number > 1 %}
+            <li class="collection-item no-padding surah-item">
+              <div class="surah-content center">
+                <span class="title surah-title">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+              </div>
+            </li>
+          {% endif %}
           {% for ayah in surah.ayahs %}
             <li class="collection-item no-padding surah-item">
               <div class="surah-content">
-                <span class="title surah-title">{{ ayah.text }}</span>
+                <span class="title surah-title">
+                  {% if surah.number > 1 %}
+                    {{ ayah.text | replace("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "") }}
+                  {% else %}
+                    {{ ayah.text }}
+                  {% endif %}
+                </span>
                 <p>Ayat ke-{{ ayah.numberInSurah }}</p>
+                <div id="translate-{{ ayah.numberInSurah }}" class="translate-id loading-text" data-text="">
+                  <div class="progress">
+                    <div class="indeterminate"></div>
+                  </div>
+                </div>
               </div>
               <div data-ayah="{{ ayah.number }}" class="surah-detail cyan accent-2">
                 <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio(this)">Play Audio</a>
