@@ -18,9 +18,12 @@ function playAudio(){
   currentParent = parent;
   var ayahNumber = parent.data('ayah');
   
+  parent.html(`
+      <audio controls autoplay>
+        <source src="${audioCdn(ayahNumber)}"></source>
+      </audio>
+  `);  
   
-  
-
 }
 
 
