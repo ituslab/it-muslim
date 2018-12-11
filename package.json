@@ -4,7 +4,8 @@
   "description": "Simple Al-Quran web app built with love",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e html,js,css server.js"
+    "start": "nodemon -e html,js,css server.js",
+    "build": "babel src/js -d assets/js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "nunjucks": "^3.1.4"
   },
   "devDependencies": {
-    "babel": "^6.23.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1"
   }
 }
