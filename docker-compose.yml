@@ -10,7 +10,7 @@ services:
       - .:/it-muslim/
     depends_on: 
       - muslim-redis
-    command: ["./wait-for-it.sh","","-t","150","--","npm","start"]
+    command: ["./wait-for-it.sh","muslim-redis:6379","-t","150","--","npm","start"]
   muslim-redis:
     image: redis
     container_name: muslim-redis
