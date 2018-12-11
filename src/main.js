@@ -2,14 +2,15 @@
 // http://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/262
 
 
+function playAudio(e){
+  var parent = $(e).closest('.surah-detail');
+  var ayahNumber = parent.data('ayah');
+  var cdnAudio = 'http://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/'+ayahNumber;
 
-function playAudio(numberAyah) {
-    var
-      audioCdn = 'http://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/'+numberAyah;
-  
-    $('#'+numberAyah).html(`
-      <audio id="{{ayah.number}}" autoplay class="ayah-player" controls>
-        <source src="${audioCdn}" type="audio/mpeg">
+  parent.html(`
+      <audio class="audio-player" controls>
+        <source src="${cdnAudio}"></source>
       </audio>
-    `)
-  }
+  `);
+
+}
