@@ -7,7 +7,9 @@ body {
     margin: 0;
 }
 
-
+.brand-logo {
+    padding: 0 15px !important;
+}
 
 ul {
     padding-left: 0;

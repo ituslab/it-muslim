@@ -1,7 +1,7 @@
 FROM node:8
 
 
-WORKDIR /it-quran
+WORKDIR /it-muslim
 
 COPY . .
 

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block addonJs %}
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/detail.js"></script>
 {% endblock %}
 
 
@@ -39,8 +39,8 @@
                   </div>
                 </div>
               </div>
-              <div data-ayah="{{ ayah.number }}" class="surah-detail cyan accent-2">
-                <a class="waves-effect waves-teal btn-flat btn-audio" onclick="playAudio(this)">Play Audio</a>
+              <div data-ayah="{{ ayah.number }}" class="surah-detail light-green accent-4">
+                <a class="waves-effect waves-teal btn-flat btn-audio white-text" onclick="playAudio(this)">Play Audio</a>
               </div>
             </li>
           {% endfor %}
