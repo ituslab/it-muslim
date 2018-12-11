@@ -39,8 +39,14 @@
     color: white;
 }
 
+.surah-title {
+    font-size: 30px;
+}
+
 .navbar-mobile-item > a {
     color: inherit;
+    display: inherit;
+    font-weight: inherit;
 }
 
 .navbar-mobile-item:hover {
@@ -50,6 +56,10 @@
 
 #navbar-mobile-icon {
     text-align: right;
+}
+
+.surah-content {
+    padding: 10px;
 }
 
 #navbar-mobile-title {

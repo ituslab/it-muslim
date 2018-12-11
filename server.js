@@ -21,13 +21,11 @@ app.use(bodyParser.urlencoded({
   extended:true
 }))
 
+// TODO caching
 app.get('/surah/:surah', (req, res) => {
-  console.log('before request...')
-
   axios
   .get(`https://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
   .then(response => {
-    console.log('get response...')
     
     const {data} = response.data
     const surah = data
@@ -43,6 +41,7 @@ app.get('/surah/:surah', (req, res) => {
   })
 })
 
+// TODO caching
 app.get('/', (req, res) => {
   axios.get('https://api.alquran.cloud/surah')
   .then(r => {
