@@ -5,11 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e html,js,css server.js",
-    "build": "babel src -d assets/js"
+    "build": "babel src -d assets/js",
+    "prestart": "babel src -d assets/js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/itpolsri/it-quran.git"
+  },
+  "nodemonConfig":{
+    "ignore":["assets/js"],
+    "events":{
+      "restart":"babel src -d assets/js"
+    }
   },
   "keywords": [],
   "author": "",
