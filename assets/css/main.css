@@ -1,6 +1,6 @@
 #navbar-mobile {
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     height: 100%;
     background-image: url('/assets/img/gradien1.png');
     background-size: cover;
@@ -10,6 +10,10 @@
     top: 0;
     bottom: 0;
     right: 0;
+}
+
+#modal-map {
+    z-index: 9999;
 }
 
 #navbar-mobile-close {

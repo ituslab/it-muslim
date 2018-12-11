@@ -2,7 +2,8 @@
   <nav class="nav-wrapper light-green accent-4">
       <h5 href="#" id="navbar-title">IT-Muslim</h5>
       <ul id="nav-desktop" class="right hide-on-med-and-down">
-      <li><a href="/">List surah</a></li>
+      <li><a href="/">List Surah</a></li>
+      <li><a class="modal-trigger" href="#modal-map">Cari Masjid</a></li>
       </ul>
       <ul id="nav-mobile" class="right show-on-medium-and-down hide-on-large-only">
         <li id="nav-toggler">
@@ -20,11 +21,24 @@
   <h3 id="navbar-mobile-title">IT-Muslim</h3>
   <div id="navbar-mobile-content">
       <button class="navbar-mobile-item" >
-        <a href="/">List surah</a>
+        <a href="/">List Surah</a>
       </button>
       <button class="navbar-mobile-item" >
-        <a href="">Cari masjid</a>
+        <a class="modal-trigger" href="#modal-map">Cari Masjid</a>
       </button>
   </div>
 </nav>
 <!-- mobile navbar -->
+
+<!-- Modal -->
+<div id="modal-map" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Map</h4>
+    <div id="map" style="height: 350px; width: 100%">
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Tutup</a>
+  </div>
+</div>
