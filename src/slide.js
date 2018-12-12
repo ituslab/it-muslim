@@ -6,35 +6,62 @@ let currentIdx = 0
 
 
 function getResponse(data){
+    console.log(data)
+
     currentDetail = {
         nama_surah:data.data.englishName,
-        jumlah_ayat:data.data.numberOfAyahs
+        jumlah_ayat:data.data.numberOfAyahs,
+        surah_ke:data.data.number
     }
 
     const {ayahs} = data.data
-    const mapResult = ayahs.map(({number,numberInSurah,juz,text,audio})=>(
-        {
+    const mapResult = ayahs.map(({number,numberInSurah,juz,text,audio})=>{
+        if(currentDetail.surah_ke > 1 && numberInSurah === 1) {
+            text = text.toString().replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ','')
+        }
+        return {
             number,
             numberInSurah,
             juz,
             text,
             audio   
         }
-    ))
+    })
+
     arrOfAyah = mapResult
+
+    if(currentDetail.surah_ke > 1) {
+        arrOfAyah.unshift({
+            text:'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ'
+        })
+    }
     parsedResult()
 }
 
 function onAutoplay(ev){
-    
+
 }
 
 function changeAyah(ayah){
+    if( (currentDetail.surah_ke > 1 && currentIdx === 1) || (currentDetail.surah_ke === 1 && currentIdx === 0) ) {
+        $('#btn-autoplay').show()
+    } else {
+        $('#btn-autoplay').hide()
+    }
 
-    currentIdx === 0 ? $('#btn-autoplay').show() : $('#btn-autoplay').hide()
+    if(currentDetail.surah_ke > 1 && currentIdx === 0) {
+        $('#ayah').text(ayah.text).prop('class','font-uthmani')
+        $('#ayah').css('font-size','35px')
+        
+        $('#ayah-ke').text(`Surah : ${currentDetail.nama_surah}`)
+        $('#audio-container').html('')
+        return;
+    }
+
+    
 
     $('#ayah').text(ayah.text).prop('class','font-uthmani')
-    $('#ayah').css('font-size','35px');
+    $('#ayah').css('font-size','35px')
 
     $('#ayah-ke').text(`Ayat ke ${ayah.numberInSurah}`)
     $('#audio-container').html(`
