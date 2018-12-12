@@ -8,7 +8,7 @@ function playAudio(e){
   let cdnAudio = 'http://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/'+ayahNumber;
 
   parent.html(`
-      <audio class="audio-player" controls>
+      <audio class="audio-player" controls autoplay>
         <source src="${cdnAudio}"></source>
       </audio>
   `)
