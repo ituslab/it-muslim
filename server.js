@@ -22,26 +22,6 @@ app.use(bodyParser.urlencoded({
   extended:true
 }))
 
-app.get('/surah/no-cache/:surah',(req,res)=>{
-  axios
-        .get(`https://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
-        .then(response => {
-          
-          const {data} = response.data
-          const surah = data
-
-          res.render('detail.html', {
-            pageTitle: surah.englishName,
-            surah
-          })
-        })
-        .catch(err => {
-          console.error('ERR_RESPONSE', err)
-          res.send('ERR')
-        })
-})
-
-// TODO caching
 app.get('/surah/:surah', (req, res) => {
 
   redisClient.get(`surah:${req.params.surah}`,(err,reply)=>{
@@ -74,6 +54,16 @@ app.get('/surah/:surah', (req, res) => {
   })
 
 })
+
+
+app.get('/surah/slide/:surah_number',(req,res)=>{
+    res.render('slide.html',{
+        pageTitle:'Slide mode'
+    })
+})
+
+
+
 
 // TODO caching
 app.get('/', (req, res) => {

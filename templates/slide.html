@@ -1,0 +1,52 @@
+{% extends "layouts/default.html" %}
+
+
+{% block addonCss %}
+    <link rel="stylesheet" href="/assets/css/slide.css"/>
+{% endblock %}
+
+
+{% block addonJs %}
+    <script src="/assets/js/slide.js"></script>
+{% endblock %}
+
+{% block mainContent %}
+
+    <div id="my-slider">
+        <div id="my-slider-content" class="center">
+            <a id="btn-autoplay" onclick="onAutoplay(this)" class="waves-effect waves-light btn">Autoplay</a>
+
+            <a id="btn-start-slide" onclick="onStartSlide(this)" class="waves-effect waves-light btn btn-start-slide">Start slide</a>
+            <p id="ayah">
+                Tekan tombol di atas untuk memulai membaca surah 
+            </p>
+            <div id="audio-container">
+
+            </div>
+            <p id="ayah-ke">Surah : <span  id="detail-surah"></span></p>
+            <p id="jml-ayah">Jumlah ayat: <span id="detail-jml-ayat"></span></p>
+        </div>
+    </div>
+
+
+    <div class="container my-container">
+        <div class="section row">
+        <div class="col s12 center my-progress">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                        <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col s12 center my-progress">
+            <h2>Please wait...</h2>
+        </div>
+        </div>
+    </div>
+{% endblock %}

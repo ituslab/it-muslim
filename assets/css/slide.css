@@ -1,0 +1,51 @@
+.my-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+
+.btn-start-slide {
+    text-transform: none;
+}
+#btn-autoplay {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+
+.my-audio {
+    display: block;
+    width: 100%;
+}
+
+#my-slider-content {
+    color: white;
+    width: 50%;
+}
+#my-slider {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: url('/assets/img/gradien1.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+.my-progress {
+    display: none;
+}
+
+.my-container .section.row {
+    margin-bottom: 0;
+}

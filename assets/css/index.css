@@ -19,5 +19,13 @@ li {
     list-style-type: none;
 }
 
+#modal-detail ul {
+    text-align: left;
+}
+
+.btn-go {
+    padding-left: 0;
+    text-transform: none;
+}
 
 
