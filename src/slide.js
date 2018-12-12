@@ -6,8 +6,6 @@ let currentIdx = 0
 
 
 function getResponse(data){
-    console.log(data)
-
     currentDetail = {
         nama_surah:data.data.englishName,
         jumlah_ayat:data.data.numberOfAyahs,
