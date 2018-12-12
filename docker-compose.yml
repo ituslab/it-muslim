@@ -1,0 +1,16 @@
+version: '3'
+services: 
+  it-muslim:
+    build: .
+    image: it-muslim
+    container_name: it-muslim
+    ports: 
+      - "9696:9696"
+    volumes: 
+      - .:/it-muslim/
+    depends_on: 
+      - muslim-redis
+    command: ["./wait-for-it.sh","","-t","150","--","npm","start"]
+  muslim-redis:
+    image: redis
+    container_name: muslim-redis

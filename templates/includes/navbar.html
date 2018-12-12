@@ -1,11 +1,34 @@
 <div class="navbar-fixed">
-  <nav class="nav-wrapper cyan accent-2">
-    <a href="#" class="brand-logo">Logo</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+  <nav class="nav-wrapper light-green accent-4">
+      <h5 href="#" id="navbar-title">IT-Muslim</h5>
+      <ul id="nav-desktop" class="right hide-on-med-and-down">
+      <li><a href="/">List Surah</a></li>
       <li><a class="modal-trigger" href="#modal-map">Cari Masjid</a></li>
-    </ul>
+      </ul>
+      <ul id="nav-mobile" class="right show-on-medium-and-down hide-on-large-only">
+        <li id="nav-toggler">
+          <i id="dehaze" class="large material-icons">dehaze</i>
+        </li>
+      </ul>
   </nav>
 </div>
+
+<!-- mobile navbar -->
+<nav id="navbar-mobile" >
+  <div id="navbar-mobile-icon">
+      <i id="navbar-mobile-close" class="material-icons">close</i>
+  </div>
+  <h3 id="navbar-mobile-title">IT-Muslim</h3>
+  <div id="navbar-mobile-content">
+      <button class="navbar-mobile-item" >
+        <a href="/">List Surah</a>
+      </button>
+      <button class="navbar-mobile-item" >
+        <a class="modal-trigger" href="#modal-map">Cari Masjid</a>
+      </button>
+  </div>
+</nav>
+<!-- mobile navbar -->
 
 <!-- Modal -->
 <div id="modal-map" class="modal modal-fixed-footer">
