@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const axios = require('axios').default
 const envNunjucks = new nunjucks.Environment(new nunjucks.FileSystemLoader('templates'))
+const redisClient = require('./services/redisservice')
 
 
 const app = express()
@@ -21,24 +22,57 @@ app.use(bodyParser.urlencoded({
   extended:true
 }))
 
+app.get('/surah/no-cache/:surah',(req,res)=>{
+  axios
+        .get(`https://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
+        .then(response => {
+          
+          const {data} = response.data
+          const surah = data
+
+          res.render('detail.html', {
+            pageTitle: surah.englishName,
+            surah
+          })
+        })
+        .catch(err => {
+          console.error('ERR_RESPONSE', err)
+          res.send('ERR')
+        })
+})
+
 // TODO caching
 app.get('/surah/:surah', (req, res) => {
-  axios
-  .get(`https://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
-  .then(response => {
-    
-    const {data} = response.data
-    const surah = data
 
-    res.render('detail.html', {
-      pageTitle: surah.englishName,
-      surah
-    })
+  redisClient.get(`surah:${req.params.surah}`,(err,reply)=>{
+      if(!reply) {
+        axios
+        .get(`https://api.alquran.cloud/surah/${req.params.surah}/ar.alafasy`)
+        .then(response => {
+          
+          const {data} = response.data
+          const surah = data
+
+          redisClient.setex(`surah:${req.params.surah}`,3600 ,  JSON.stringify(surah) )
+      
+          res.render('detail.html', {
+            pageTitle: surah.englishName,
+            surah
+          })
+        })
+        .catch(err => {
+          console.error('ERR_RESPONSE', err)
+          res.send('ERR')
+        })
+      } else {
+          const parsedReply = JSON.parse(reply)
+          res.render('detail.html',{
+            pageTitle:parsedReply.englishName,
+            surah:parsedReply
+          })
+      }
   })
-  .catch(err => {
-    console.error('ERR_RESPONSE', err)
-    res.send('ERR')
-  })
+
 })
 
 // TODO caching
