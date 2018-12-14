@@ -54,10 +54,11 @@ function onStop(ev){
 }
 
 function onAutoplay(ev){
+    fetchNextAudio()
+
     $(ev).hide()
     $('#btn-stop').show()
     $(window).off('keydown')
-    
     $('#audio').on('ended',onAudioEnded)
     $('#audio')[0].play()
     isAutoplay = true
@@ -110,15 +111,15 @@ function changeAyah(ayah){
     }
 }
 
-function onPlay(ev){
-    console.log('playing audio ',arrOfAyah[currentIdx].numberInSurah,arrOfAyah[currentIdx].number)
-
+function fetchNextAudio(){
     if(currentIdx === arrOfAyah.length - 1) return
-
-
-    console.log('fetching for next ayah',arrOfAyah[currentIdx + 1].number)
+    
     let nextAudioUrl = arrOfAyah[currentIdx + 1].audio
     new Audio(nextAudioUrl)
+}
+
+function onPlay(ev){
+    fetchNextAudio()
 }
 
 
