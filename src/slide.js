@@ -23,7 +23,7 @@ function getResponse(data){
             numberInSurah,
             juz,
             text,
-            audio   
+            audio
         }
     })
 
@@ -88,7 +88,7 @@ function changeAyah(ayah){
     if(currentDetail.surah_ke > 1 && currentIdx === 0) {
         $('#ayah').text(ayah.text).prop('class','font-uthmani')
         $('#ayah').css('font-size','35px')
-        
+
         $('#ayah-ke').text(`Surah : ${currentDetail.nama_surah}`)
         $('#audio-container').html('')
         return;
@@ -172,10 +172,10 @@ $(document).ready(()=>{
 
     const urlSegments = window.location.pathname.split('/')
     const lastSegment = urlSegments[urlSegments.length - 1]
-    
+
     $.get(`https://api.alquran.cloud/surah/${lastSegment}/ar.alafasy`,
         (data,statusText,xhr)=>{
-           getResponse(data) 
+           getResponse(data)
         }
     )
 
