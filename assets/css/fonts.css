@@ -42,5 +42,6 @@
 .font-uthmani {
   font-family: 'Uthmani', serif;
   line-height: 75px;
+  text-align: right;
   letter-spacing: 2px;
 }

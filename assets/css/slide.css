@@ -8,11 +8,22 @@
 .btn-start-slide {
     text-transform: none;
 }
+
+#btn-player-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+
 #btn-autoplay {
     display: none;
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    padding: 10px;
+}
+#btn-stop {
+    display: none;
+    padding: 10px;
 }
 
 

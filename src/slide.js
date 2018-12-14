@@ -3,6 +3,7 @@
 let arrOfAyah = []
 let currentDetail = null
 let currentIdx = 0
+let isAutoplay = false
 
 
 function getResponse(data){
@@ -36,8 +37,45 @@ function getResponse(data){
     parsedResult()
 }
 
-function onAutoplay(ev){
+function onStop(ev){
+    isAutoplay = false
+    $(ev).hide()
+    $('#audio').off('ended')
+    $('#audio').off('play')
+    $('#audio')[0].pause()
 
+    $(window).on('keydown',onSlideKey)
+
+    if( (currentDetail.surah_ke === 1 && currentIdx === 0) || (currentDetail.surah_ke > 1 && currentIdx === 1) ) {
+        $('#btn-autoplay').show()
+    } else {
+        $('#btn-autoplay').hide()
+    }
+}
+
+function onAutoplay(ev){
+    $(ev).hide()
+    $('#btn-stop').show()
+    $(window).off('keydown')
+    
+    $('#audio').on('ended',onAudioEnded)
+    $('#audio')[0].play()
+    isAutoplay = true
+}
+
+function onAudioEnded(){
+    if(currentIdx === arrOfAyah.length - 1) {
+        $('#btn-stop').hide()
+        $('#audio').off('ended')
+        $('#audio').off('play')
+        $(window).on('keydown',onSlideKey)
+        isAutoplay = false
+
+        return
+    }
+
+    ++currentIdx
+    changeAyah(arrOfAyah[currentIdx])
 }
 
 function changeAyah(ayah){
@@ -56,17 +94,31 @@ function changeAyah(ayah){
         return;
     }
 
-    
-
     $('#ayah').text(ayah.text).prop('class','font-uthmani')
     $('#ayah').css('font-size','35px')
 
     $('#ayah-ke').text(`Ayat ke ${ayah.numberInSurah}`)
     $('#audio-container').html(`
-        <audio controls class="my-audio">
+        <audio id="audio" controls class="my-audio">
             <source src="${ayah.audio}"></source>
         </audio>
     `)
+    if(isAutoplay) {
+        $('#audio').on('ended',onAudioEnded)
+        $('#audio').prop('autoplay',true)
+        $('#audio').on('play',onPlay)
+    }
+}
+
+function onPlay(ev){
+    console.log('playing audio ',arrOfAyah[currentIdx].numberInSurah,arrOfAyah[currentIdx].number)
+
+    if(currentIdx === arrOfAyah.length - 1) return
+
+
+    console.log('fetching for next ayah',arrOfAyah[currentIdx + 1].number)
+    let nextAudioUrl = arrOfAyah[currentIdx + 1].audio
+    new Audio(nextAudioUrl)
 }
 
 
