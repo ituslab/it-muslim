@@ -37,13 +37,16 @@ function getResponse(data){
     parsedResult()
 }
 
+// resuming audio
 function onResume(ev) {
     $(ev).hide()
     $('#btn-stop').show()
     $('#audio')[0].play()
 }
 
-
+// stop current audio
+// if ayah in current surah = 1, activate onSlideKey
+// otherwise, show resume button
 function onStop(ev){
     isAutoplay = false
     $(ev).hide()
@@ -60,6 +63,9 @@ function onStop(ev){
     }
 }
 
+
+// do autoplay in audio
+// hint: disable onSlideKey event
 function onAutoplay(ev){
     fetchNextAudio()
 
@@ -71,6 +77,7 @@ function onAutoplay(ev){
     isAutoplay = true
 }
 
+// called when audio ended
 function onAudioEnded(){
     if(currentIdx === arrOfAyah.length - 1) {
         $('#btn-stop').hide()
@@ -86,6 +93,8 @@ function onAudioEnded(){
     changeAyah(arrOfAyah[currentIdx])
 }
 
+
+// change current ayah based on currentIdx
 function changeAyah(ayah){
     if( (currentDetail.surah_ke > 1 && currentIdx === 1) || (currentDetail.surah_ke === 1 && currentIdx === 0) ) {
         $('#btn-autoplay').show()
@@ -118,6 +127,8 @@ function changeAyah(ayah){
     }
 }
 
+
+// load next audio
 function fetchNextAudio(){
     if(currentIdx === arrOfAyah.length - 1) return
     
@@ -125,6 +136,8 @@ function fetchNextAudio(){
     new Audio(nextAudioUrl)
 }
 
+// called when audio is playing
+// load next audio while playing , to prevent lag in the next audio
 function onPlay(ev){
     $('#btn-resume').hide()
     $('#btn-stop').show()
@@ -135,6 +148,9 @@ function onPlay(ev){
 }
 
 
+// manual slide (not autoplay)
+// using left,right arrow in keyboard
+// to change current ayah
 function onSlideKey(ev){
     const {keyCode} = ev
     if(keyCode === 37 || keyCode === 39) {
