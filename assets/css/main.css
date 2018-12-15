@@ -12,8 +12,8 @@
     right: 0;
 }
 
-#modal-map {
-    z-index: 9999;
+.pac-container{
+  z-index: 9999; 
 }
 
 #navbar-mobile-close {

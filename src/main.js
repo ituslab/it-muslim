@@ -13,5 +13,5 @@ $(window).resize(_=>{
 })
 
 $(document).ready(() => {
-$('.modal').modal()
+  $('.modal').modal()
 })
