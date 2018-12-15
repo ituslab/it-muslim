@@ -37,19 +37,26 @@ function getResponse(data){
     parsedResult()
 }
 
+function onResume(ev) {
+    $(ev).hide()
+    $('#btn-stop').show()
+    $('#audio')[0].play()
+}
+
+
 function onStop(ev){
     isAutoplay = false
     $(ev).hide()
-    $('#audio').off('ended')
-    $('#audio').off('play')
     $('#audio')[0].pause()
-
-    $(window).on('keydown',onSlideKey)
-
+    
     if( (currentDetail.surah_ke === 1 && currentIdx === 0) || (currentDetail.surah_ke > 1 && currentIdx === 1) ) {
         $('#btn-autoplay').show()
+        $('#audio').off('ended')
+        $('#audio').off('play')
+        $(window).on('keydown',onSlideKey)
     } else {
         $('#btn-autoplay').hide()
+        $('#btn-resume').show()
     }
 }
 
@@ -119,6 +126,11 @@ function fetchNextAudio(){
 }
 
 function onPlay(ev){
+    $('#btn-resume').hide()
+    $('#btn-stop').show()
+    $(window).off('keydown')
+    isAutoplay = true
+
     fetchNextAudio()
 }
 

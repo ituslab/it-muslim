@@ -25,6 +25,10 @@
     display: none;
     padding: 10px;
 }
+#btn-resume {
+    display: none;
+    padding: 10px;
+}
 
 
 .my-audio {
