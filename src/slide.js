@@ -1,5 +1,3 @@
-
-
 let arrOfAyah = []
 let currentDetail = null
 let currentIdx = 0
@@ -51,7 +49,7 @@ function onStop(ev){
     isAutoplay = false
     $(ev).hide()
     $('#audio')[0].pause()
-    
+
     if( (currentDetail.surah_ke === 1 && currentIdx === 0) || (currentDetail.surah_ke > 1 && currentIdx === 1) ) {
         $('#btn-autoplay').show()
         $('#audio').off('ended')
@@ -116,7 +114,7 @@ function changeAyah(ayah){
 
     $('#ayah-ke').text(`Ayat ke ${ayah.numberInSurah}`)
     $('#audio-container').html(`
-        <audio id="audio" controls class="my-audio">
+        <audio id="audio" controls autoplay class="my-audio">
             <source src="${ayah.audio}"></source>
         </audio>
     `)
@@ -131,7 +129,7 @@ function changeAyah(ayah){
 // load next audio
 function fetchNextAudio(){
     if(currentIdx === arrOfAyah.length - 1) return
-    
+
     let nextAudioUrl = arrOfAyah[currentIdx + 1].audio
     new Audio(nextAudioUrl)
 }
